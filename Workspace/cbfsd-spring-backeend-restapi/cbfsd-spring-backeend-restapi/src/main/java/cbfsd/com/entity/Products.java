@@ -6,11 +6,14 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Products {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "productid")
 	private int productId;
 	@Column(name = "producttitle")
@@ -19,7 +22,6 @@ public class Products {
 	private String productDescription;
 	@Column(name = "productcode")
 	private String productCode;
-	
 	//private List<String> images;
 	@Column(name = "thumbnailimage")
 	private int thumbnailImage;
@@ -27,6 +29,7 @@ public class Products {
 	@Column(name = "addedon")
 	private LocalDate addedOn;
 	private int rating;
+	
 	public Products() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -98,11 +101,12 @@ public class Products {
 	public void setRating(int rating) {
 		this.rating = rating;
 	}
-//	@Override
-//	public String toString() {
-//		return "Products [productId=" + productId + ", productTitle=" + productTitle + ", productDescription="
-//				+ productDescription + ", productCode=" + productCode + ", images=" + images + ", thumbnailImage="
-//				+ thumbnailImage + ", price=" + price + ", addedOn=" + addedOn + ", rating=" + rating + "]";
-//	}
+	@Override
+	public String toString() {
+		return "Products [productId=" + productId + ", productTitle=" + productTitle + ", productDescription="
+				+ productDescription + ", productCode=" + productCode + ", thumbnailImage=" + thumbnailImage
+				+ ", price=" + price + ", addedOn=" + addedOn + ", rating=" + rating + "]";
+	}
+
 	
 }

@@ -45,6 +45,7 @@ public class Orders {
 	private String address;
 	private String name;
 	private Long contact;
+	
 	public Orders() {
 		super();
 		// TODO Auto-generated constructor stub
