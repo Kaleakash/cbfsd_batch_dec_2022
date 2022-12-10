@@ -6,7 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cbfsd.com.entity.Products;
+import cbfsd.com.entity.Product;
+
 import cbfsd.com.repository.ProductsRepository;
 
 @Service
@@ -16,29 +17,29 @@ public class ProductsService {
 	ProductsRepository productRepository;
 	
 	
-	public String storeProduct(Products product) {
+	public String storeProduct(Product product) {
 		productRepository.save(product);			// insert query 
 		return "Product Details stored successfully";
 	}
 	
-	public List<Products> findAllProduct() {
+	public List<Product> findAllProduct() {
 		return productRepository.findAll();			// select query 
 	}
 	
 	public String findProductById(int productid) {
-		Optional<Products> result = productRepository.findById(productid);// USING pk
+		Optional<Product> result = productRepository.findById(productid);// USING pk
 		if(result.isPresent()) {
-			Products pp	 = result.get();
+			Product pp	 = result.get();
 			return pp.toString();
 		}else {
 			return "Product not present";
 		}
 	}
 	
-	public String updateProductDetails(Products product) {
-		Optional<Products> result = productRepository.findById(product.getProductId());// USING pk
+	public String updateProductDetails(Product product) {
+		Optional<Product> result = productRepository.findById(product.getProductId());// USING pk
 		if(result.isPresent()) {
-			Products pp	 = result.get();
+			Product pp	 = result.get();
 			pp.setPrice(product.getPrice());
 			/*
 			 * 	we can update more property 
@@ -52,9 +53,9 @@ public class ProductsService {
 	}
 	
 	public String deleteProductUsingId(int productid) {
-		Optional<Products> result = productRepository.findById(productid);// USING pk
+		Optional<Product> result = productRepository.findById(productid);// USING pk
 		if(result.isPresent()) {
-			Products pp	 = result.get();
+			Product pp	 = result.get();
 			productRepository.deleteById(pp.getProductId());
 			return "Product details deleted successfully";
 		}else {
@@ -67,7 +68,7 @@ public class ProductsService {
 		return "Add product deleted";
 	}
 	
-	public List<Products> findProductByPrice(int price){
+	public List<Product> findProductByPrice(int price){
 		return productRepository.searchProductByPrice(price);
 	}
 	

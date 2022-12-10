@@ -7,11 +7,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import cbfsd.com.entity.Products;
+import cbfsd.com.entity.Product;
+
 
 @Repository
-public interface ProductsRepository extends JpaRepository<Products, Integer>{
+public interface ProductsRepository extends JpaRepository<Product, Integer>{
 
-	@Query("select p from Products p where p.price > :price")
-	public List<Products> searchProductByPrice(@Param("price") int price);
+	@Query("select p from Product p where p.price > :price")
+	public List<Product> searchProductByPrice(@Param("price") int price);
 }

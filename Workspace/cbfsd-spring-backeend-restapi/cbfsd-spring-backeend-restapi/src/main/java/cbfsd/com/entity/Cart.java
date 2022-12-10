@@ -1,70 +1,68 @@
 package cbfsd.com.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import java.io.Serializable;
+import javax.persistence.*;
 
+
+/**
+ * The persistent class for the cart database table.
+ * 
+ */
 @Entity
-public class Cart {
+@NamedQuery(name="Cart.findAll", query="SELECT c FROM Cart c")
+public class Cart implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	@Column(name = "cartid")
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="cardid")
 	private int cartId;
-	@Column(name = "productid")
-	private int productId;
-	@Column(name = "userid")
-	private int userId;
 	
 	private int quantity;
 
-	// no argument constructor
-	public Cart() {	}
+	//bi-directional many-to-one association to Product
+	@ManyToOne
+	@JoinColumn(name="productId")
+	private Product product;
 
-	// parameterized constructor
-	public Cart(int cartId, int productId, int userId, int quantity) {
-		super();
-		this.cartId = cartId;
-		this.productId = productId;
-		this.userId = userId;
-		this.quantity = quantity;
+	//bi-directional many-to-one association to User
+	@ManyToOne
+	@JoinColumn(name="userId")
+	private User user;
+
+	public Cart() {
 	}
-	// getter & setters
 
 	public int getCartId() {
-		return cartId;
+		return this.cartId;
 	}
 
 	public void setCartId(int cartId) {
 		this.cartId = cartId;
 	}
 
-	public int getProductId() {
-		return productId;
-	}
-
-	public void setProductId(int productId) {
-		this.productId = productId;
-	}
-
-	public int getUserId() {
-		return userId;
-	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
-
 	public int getQuantity() {
-		return quantity;
+		return this.quantity;
 	}
 
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 
-	// override tostring
-	@Override
-	public String toString() {
-		return "Cart [cartId=" + cartId + ", productId=" + productId + ", userId=" + userId + ", quantity=" + quantity
-				+ "]";
+	public Product getProduct() {
+		return this.product;
 	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+	public User getUser() {
+		return this.user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 }

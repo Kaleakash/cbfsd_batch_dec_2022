@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import cbfsd.com.entity.Products;
+import cbfsd.com.entity.Product;
+
 import cbfsd.com.service.ProductsService;
 
 @RestController
@@ -27,13 +28,13 @@ public class ProductsController {
 	// pass data in json format. 
 	
 	@PostMapping(value = "storeProduct",consumes = MediaType.APPLICATION_JSON_VALUE)
-	public String storeProduct(@RequestBody Products product) {
+	public String storeProduct(@RequestBody Product product) {
 		return productService.storeProduct(product);
 	}
 	
 	// http://localhost:9090/products/findAllProducts
 	@GetMapping(value = "findAllProducts",produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Products> findAllProduct() {
+	public List<Product> findAllProduct() {
 		return productService.findAllProduct();
 	}
 	// http://localhost:9090/products/findProductById/1
@@ -47,13 +48,13 @@ public class ProductsController {
 	// http://localhost:9090/products/findProductByPrice/35000
 	
 	@GetMapping(value = "findProductByPrice/{price}")
-	public List<Products> findProductByPrice(@PathVariable("price") int price) {
+	public List<Product> findProductByPrice(@PathVariable("price") int price) {
 		return productService.findProductByPrice(price);
 	}
 	
 	// http://localhost:9090/products/updateProduct
 	@PutMapping(value = "updateProduct",consumes = MediaType.APPLICATION_JSON_VALUE)
-	public String updateProduct(@RequestBody Products product) {
+	public String updateProduct(@RequestBody Product product) {
 		return productService.updateProductDetails(product);
 	}
 	

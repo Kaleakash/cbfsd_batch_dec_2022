@@ -1,127 +1,226 @@
 package cbfsd.com.entity;
 
-import java.time.LocalDate;
+import java.io.Serializable;
+import javax.persistence.*;
 import java.util.Date;
+import java.math.BigInteger;
+import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
 
+/**
+ * The persistent class for the users database table.
+ * 
+ */
 @Entity
-public class User {
+@Table(name="users")
+@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
+public class User implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="userid")
 	private int userId;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="addedon")
+	private Date addedOn;
+
+	private String city;
+
+	private BigInteger contact;
+
+	private String country;
+
 	private String email;
-	private String password;
 	@Column(name="fullname")
 	private String fullName;
-	private String street;
-	private String city;
-	private String state;
-	private String country;
-	private int pincode;
+
 	private String image;
-	private Long contact;
-	@Column(name="addedon")
-	private LocalDate addedOn;
+
+	private String password;
+
+	private int pincode;
+
+	private String state;
+
+	private String street;
+
+	//bi-directional many-to-one association to Cart
+	@OneToMany(mappedBy="user")
+	private List<Cart> carts;
+
+	//bi-directional many-to-one association to Order
+	@OneToMany(mappedBy="user")
+	private List<Order> orders;
+
+	//bi-directional many-to-one association to Whishlist
+	@OneToMany(mappedBy="user")
+	private List<Whishlist> whishlists;
+
 	public User() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
-	public User(int userId, String email, String password, String fullName, String street, String city, String state,
-			String country, int pincode, String image, Long contact, LocalDate addedOn) {
-		super();
-		this.userId = userId;
-		this.email = email;
-		this.password = password;
-		this.fullName = fullName;
-		this.street = street;
-		this.city = city;
-		this.state = state;
-		this.country = country;
-		this.pincode = pincode;
-		this.image = image;
-		this.contact = contact;
-		this.addedOn = addedOn;
-	}
+
 	public int getUserId() {
-		return userId;
+		return this.userId;
 	}
+
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	public String getEmail() {
-		return email;
+
+	public Date getAddedOn() {
+		return this.addedOn;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+
+	public void setAddedOn(Date addedOn) {
+		this.addedOn = addedOn;
 	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public String getFullName() {
-		return fullName;
-	}
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
-	}
-	public String getStreet() {
-		return street;
-	}
-	public void setStreet(String street) {
-		this.street = street;
-	}
+
 	public String getCity() {
-		return city;
+		return this.city;
 	}
+
 	public void setCity(String city) {
 		this.city = city;
 	}
-	public String getState() {
-		return state;
+
+	public BigInteger getContact() {
+		return this.contact;
 	}
-	public void setState(String state) {
-		this.state = state;
+
+	public void setContact(BigInteger contact) {
+		this.contact = contact;
 	}
+
 	public String getCountry() {
-		return country;
+		return this.country;
 	}
+
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	public int getPincode() {
-		return pincode;
+
+	public String getEmail() {
+		return this.email;
 	}
-	public void setPincode(int pincode) {
-		this.pincode = pincode;
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
+
+	public String getFullName() {
+		return this.fullName;
+	}
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
 	public String getImage() {
-		return image;
+		return this.image;
 	}
+
 	public void setImage(String image) {
 		this.image = image;
 	}
-	public Long getContact() {
-		return contact;
+
+	public String getPassword() {
+		return this.password;
 	}
-	public void setContact(Long contact) {
-		this.contact = contact;
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
-	public LocalDate getAddedOn() {
-		return addedOn;
+
+	public int getPincode() {
+		return this.pincode;
 	}
-	public void setAddedOn(LocalDate addedOn) {
-		this.addedOn = addedOn;
+
+	public void setPincode(int pincode) {
+		this.pincode = pincode;
 	}
-	@Override
-	public String toString() {
-		return "User [userId=" + userId + ", email=" + email + ", password=" + password + ", fullName=" + fullName
-				+ ", street=" + street + ", city=" + city + ", state=" + state + ", country=" + country + ", pincode="
-				+ pincode + ", image=" + image + ", contact=" + contact + ", addedOn=" + addedOn + "]";
+
+	public String getState() {
+		return this.state;
 	}
-	
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getStreet() {
+		return this.street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+	public List<Cart> getCarts() {
+		return this.carts;
+	}
+
+	public void setCarts(List<Cart> carts) {
+		this.carts = carts;
+	}
+
+	public Cart addCart(Cart cart) {
+		getCarts().add(cart);
+		cart.setUser(this);
+
+		return cart;
+	}
+
+	public Cart removeCart(Cart cart) {
+		getCarts().remove(cart);
+		cart.setUser(null);
+
+		return cart;
+	}
+
+	public List<Order> getOrders() {
+		return this.orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
+
+	public Order addOrder(Order order) {
+		getOrders().add(order);
+		order.setUser(this);
+
+		return order;
+	}
+
+	public Order removeOrder(Order order) {
+		getOrders().remove(order);
+		order.setUser(null);
+
+		return order;
+	}
+
+	public List<Whishlist> getWhishlists() {
+		return this.whishlists;
+	}
+
+	public void setWhishlists(List<Whishlist> whishlists) {
+		this.whishlists = whishlists;
+	}
+
+	public Whishlist addWhishlist(Whishlist whishlist) {
+		getWhishlists().add(whishlist);
+		whishlist.setUser(this);
+
+		return whishlist;
+	}
+
+	public Whishlist removeWhishlist(Whishlist whishlist) {
+		getWhishlists().remove(whishlist);
+		whishlist.setUser(null);
+
+		return whishlist;
+	}
+
 }
