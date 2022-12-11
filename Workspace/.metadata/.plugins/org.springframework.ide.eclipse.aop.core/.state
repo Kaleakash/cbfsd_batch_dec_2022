@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aop-reference-model>
 <aop-project name="cbfsd-spring-backeend-restapi"/>
-<aop-project name="SpringBootWithRESTAPI"/>
-<aop-project name="SpringBootWithDIConcept"/>
 </aop-reference-model>

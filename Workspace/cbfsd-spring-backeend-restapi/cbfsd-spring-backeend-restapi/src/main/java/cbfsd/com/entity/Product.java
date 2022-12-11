@@ -2,6 +2,8 @@ package cbfsd.com.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -25,7 +27,11 @@ public class Product implements Serializable {
 	@Column(name="addedon")
 	private Date addedOn;
 
-	private String images;
+	
+	@ElementCollection
+	@OrderColumn(name = "imageid")
+	@CollectionTable(name="imageinfo")
+	private String images[];
 
 	private int price;
 	@Column(name="productcode")
@@ -75,11 +81,11 @@ public class Product implements Serializable {
 		this.addedOn = addedOn;
 	}
 
-	public String getImages() {
+	public String[] getImages() {
 		return this.images;
 	}
 
-	public void setImages(String images) {
+	public void setImages(String[] images) {
 		this.images = images;
 	}
 
@@ -205,4 +211,16 @@ public class Product implements Serializable {
 		return whishlist;
 	}
 
+	@Override
+	public String toString() {
+		return "Product [productId=" + productId + ", addedOn=" + addedOn + ", images=" + Arrays.toString(images)
+				+ ", price=" + price + ", productCode=" + productCode + ", productDescription=" + productDescription
+				+ ", productTitle=" + productTitle + ", rating=" + rating + ", thumbnailImage=" + thumbnailImage
+				+ ", carts=" + carts + ", orderitems=" + orderitems + ", category=" + category + ", whishlists="
+				+ whishlists + "]";
+	}
+
+	
+
+		
 }

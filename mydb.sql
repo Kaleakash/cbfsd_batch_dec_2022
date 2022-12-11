@@ -118,3 +118,7 @@ CREATE TABLE CART(
 );
 
 show tables;
+
+desc imageinfo;
+alter table imageinfo modify images longblob;
+
