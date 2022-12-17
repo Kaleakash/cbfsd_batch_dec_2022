@@ -21,7 +21,7 @@ public class Category implements Serializable {
 	@Column(name="categoryid")
 	private int categoryId;
 
-	private int active;
+	private boolean active;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="addedon")
@@ -49,11 +49,11 @@ public class Category implements Serializable {
 		this.categoryId = categoryId;
 	}
 
-	public int getActive() {
+	public boolean getActive() {
 		return this.active;
 	}
 
-	public void setActive(int active) {
+	public void setActive(boolean active) {
 		this.active = active;
 	}
 

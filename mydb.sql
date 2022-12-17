@@ -31,10 +31,12 @@ CREATE TABLE CATEGORIES (
   categoryName          VARCHAR(255) NOT NULL,
   categoryDescription   VARCHAR(255),
   categoryImageUrl      VARCHAR(500),
-  active                INTEGER DEFAULT 0,
+  active                boolean,
   addedOn               DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+alter table categories modify categoryImageUrl longblob;
 
+#alter table categories modify active boolean;
 CREATE TABLE ORDERS(
   orderId              INTEGER NOT NULL PRIMARY KEY,
   orderDate            DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -61,7 +63,7 @@ CREATE TABLE PRODUCTS(
   productDescription    VARCHAR(500) NOT NULL,
   productCode           VARCHAR(500) NOT NULL,
   categoryId            INTEGER,
-  images                VARCHAR(1000),
+		images                VARCHAR(1000),
   thumbnailImage        INTEGER DEFAULT 0,
   price                 INTEGER DEFAULT 0,
   addedOn               DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -86,8 +88,15 @@ CREATE TABLE ORDERITEMS(
 );
 
 
+desc imageinfo;
+#product_productid,imageid(CPK)
 
+select * from imageinfo;
+select * from products;
 
+#create table imageinfo1(product_productid int, images longblob, imageid int, primary key(product_productid,imageid));
+select * from categories;
+desc imageinfo1;
 CREATE TABLE SHIPMENTS(
   shipmentId           INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
   orderId              INTEGER,

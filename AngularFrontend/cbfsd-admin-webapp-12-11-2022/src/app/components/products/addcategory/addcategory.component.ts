@@ -52,6 +52,11 @@ export class AddcategoryComponent implements OnInit {
     }
   }
 
+  addCategory(){
+    //alert("event fired")
+    let categoryRef = this.productCategoryForm.value;
+    console.log(categoryRef)  
+  }
   checkFileType(event: any) {
     this.tempFile = event.target.files[0];
     if (
@@ -60,6 +65,7 @@ export class AddcategoryComponent implements OnInit {
       this.tempFile.type == "image/jpg"
     ) {
       // console.log("File Ok");
+      
     } else {
       // console.log("File not Ok");
       this.tempFile = null;

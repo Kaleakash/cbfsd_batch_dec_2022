@@ -29,7 +29,7 @@ public class Product implements Serializable {
 
 	
 	@ElementCollection
-	@OrderColumn(name = "imageid")
+	@OrderColumn(name = "imageid")	// it is responsible to hold the index 
 	@CollectionTable(name="imageinfo")
 	private String images[];
 

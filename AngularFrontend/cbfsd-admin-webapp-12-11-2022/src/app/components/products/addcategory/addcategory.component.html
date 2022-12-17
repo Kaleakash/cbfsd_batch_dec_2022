@@ -44,7 +44,7 @@
       <button type="button" class="btn btn-light btn-sm" data-bs-dismiss="modal" (click)="close()">
         Cancel
       </button>
-      <button type="submit" class="btn btn-dark btn-sm" [disabled]="loader">
+      <button type="submit" class="btn btn-dark btn-sm" [disabled]="loader" (click)="addCategory()">
         Save
         <span *ngIf="loader">&nbsp;</span>
         <div *ngIf="loader" class="spinner-border spinner-border-sm text-white" role="status">
