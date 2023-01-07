@@ -13,7 +13,7 @@ import { ViewComponent } from './components/products/view/view.component';
 import { WhishlistComponent } from './components/products/whishlist/whishlist.component';
 
 const routes: Routes = [
-  {path:'', redirectTo:'/home', pathMatch:"full"},
+  // {path:'', redirectTo:'/home', pathMatch:"full"},
   {path:'home' , component:HomeComponent},
   {path:'login' , component:LoginComponent},
   {path:'register' , component:RegisterComponent},

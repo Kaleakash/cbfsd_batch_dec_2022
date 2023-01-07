@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ProductsService {
 
-  private productUrl:string  = 'https://fakestoreapi.com/products';
+  private productUrl:string  = 'http://localhost:9090/products/findAllProducts';
 
   public whishlistProducts:any[] =[];
   public cartProducts:any[] =[];

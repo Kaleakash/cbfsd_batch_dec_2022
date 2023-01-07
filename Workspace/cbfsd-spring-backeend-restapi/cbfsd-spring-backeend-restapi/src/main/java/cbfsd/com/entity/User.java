@@ -25,6 +25,23 @@ public class User implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="addedon")
 	private Date addedOn;
+	private String user;
+	
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", addedOn=" + addedOn + ", user=" + user + ", city=" + city + ", contact="
+				+ contact + ", country=" + country + ", email=" + email + ", fullName=" + fullName + ", image=" + image
+				+ ", password=" + password + ", pincode=" + pincode + ", state=" + state + ", street=" + street
+				+ ", carts=" + carts + ", orders=" + orders + ", whishlists=" + whishlists + "]";
+	}
+
+	public String getUser() {
+		return user;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
+	}
 
 	private String city;
 
