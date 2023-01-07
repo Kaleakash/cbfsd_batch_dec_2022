@@ -1,0 +1,72 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink="">GoalKart</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div *ngIf="loggedIn">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="/home" [skipLocationChange]="true">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/aboutus" [skipLocationChange]="true">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/contactus" [skipLocationChange]="true">Contact us</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Users
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" routerLink="/users" [skipLocationChange]="true">Users list</a></li>
+                        <li><a class="dropdown-item" routerLink="/users/create" [skipLocationChange]="true">Users create</a></li>
+                        <li><a class="dropdown-item" routerLink="/users/view" [skipLocationChange]="true">Users details</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Products
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" routerLink="/products" [skipLocationChange]="true">Porudct list</a></li>
+                        <li><a class="dropdown-item" routerLink="/products/create" [skipLocationChange]="true">Product create</a></li>
+                        <li><a class="dropdown-item" routerLink="/products/view" [skipLocationChange]="true">Product details</a></li>
+                        <li><a class="dropdown-item" routerLink="/products/categories" [skipLocationChange]="true">Product categories</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/orders" [skipLocationChange]="true">Orders</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="#" [skipLocationChange]="true">Shipments</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="#" [skipLocationChange]="true">Payments</a>
+                </li>
+            </ul>
+        </div>
+            <ul class="navbar-nav  mb-2 mb-lg-0">
+                <div *ngIf="!loggedIn">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/auth" [skipLocationChange]="true">Sign In</a>
+                </li>
+                </div>
+                <div *ngIf="loggedIn">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="#" (click)="logout()" [skipLocationChange]="true">Logout</a>
+                </li>
+                </div>
+            </ul>
+        </div>
+    </div>
+</nav>
