@@ -32,6 +32,8 @@ public class ProductsController {
 	@PostMapping(value = "storeProduct",consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String storeProduct(@RequestBody Product product) {
 		System.out.println(product);
+		
+		//return "done";
 		return productService.storeProduct(product);
 	}
 	
