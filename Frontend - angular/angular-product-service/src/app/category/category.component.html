@@ -1,0 +1,12 @@
+<div>
+
+    <h2>Store Category</h2>
+    <form [formGroup]="categoryRef" (ngSubmit)="storeCategory()">
+        <label>CId</label>
+        <input type="text" formControlName="cid"/><br/>
+        <label>CName</label>
+        <input type="text" formControlName="cname"/><br/>
+        <input type="submit" value="store category"/>
+        <input type="reset" value="reset"/>
+    </form>
+</div>

@@ -10,6 +10,15 @@ private int pid;
 private String pname;
 private float price;
 private String url;
+private int cid;
+
+public int getCid() {
+	return cid;
+}
+
+public void setCid(int cid) {
+	this.cid = cid;
+}
 
 public Product() {
 	super();

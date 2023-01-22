@@ -5,7 +5,9 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
+import com.bean.Category;
 import com.bean.Product;
 import com.repository.ProductRepository;
 
@@ -16,12 +18,17 @@ public class ProductService {
 	@Autowired
 	ProductRepository productRepsository;
 	
+	@Autowired
+	RestTemplate restTemplate;
 	
 	public String storeProduct(Product product) {
 		Optional<Product> result = productRepsository.findById(product.getPid());
 		if(result.isPresent()) {
 			return "Product id must be unique";
 		}else {
+		Category cc = restTemplate.getForObject("http://CATEGORY-MICRO-SERVICE/category/findAllCategoryByName/"+product.getCid(), Category.class);
+			System.out.println(cc.getCid()+" "+cc.getCname());
+			product.setCid(cc.getCid());
 			productRepsository.save(product);
 			return "Product Details stored successfully";
 		}
