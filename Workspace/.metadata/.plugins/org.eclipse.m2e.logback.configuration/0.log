@@ -2859,3 +2859,4 @@
 2023-01-14 21:13:13,130 [Worker-28: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2023-01-14 21:13:13,130 [Worker-28: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
 2023-01-14 21:13:13,130 [Worker-28: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\LENOVO\OneDrive\Desktop\Mentor Session\MyTraining\cbfsd_batch_dec_2022\Workspace\cbfsd-spring-backeend-restapi\cbfsd-spring-backeend-restapi\src\test\resources
+2023-02-04 21:17:35,158 [Worker-10: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
