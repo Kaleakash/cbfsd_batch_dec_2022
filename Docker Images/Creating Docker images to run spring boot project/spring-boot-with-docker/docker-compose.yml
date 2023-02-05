@@ -1,0 +1,29 @@
+version: "3.7"
+services:
+  spring-boot-app:
+    build:
+      context: ./spring-boot-with-docker/
+      dockerfile: Dockerfile
+    #image: product-backend-app
+    container_name: spring-boot-app
+    ports:
+      - "9090:9090"
+    networks:
+      - app-network    
+  angular-app:
+    build:
+      context: ./angular-docker/
+      dockerfile: Dockerfile
+    #image: product-frontend-app
+    container_name: angular-app
+    ports:
+      - "80:80"
+    depends_on:
+      - spring-boot-app
+    networks:
+      - app-network
+networks:
+  app-network:
+
+
+     
