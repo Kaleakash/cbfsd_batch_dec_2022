@@ -1,0 +1,100 @@
+<div class="container-fluid vh-100">
+    <div class="row" style="height: inherit;">
+        <div class="col-12 col-sm-6 d-flex flex-column justify-content-center align-items-start px-4" id="bg">
+            <h3 class="text-white text-uppercase m-0 mb-1">E-Commerce Store</h3>
+            <p class="m-0 text-white h5">Admin Dashboard</p>
+            <ul class="list-group mt-5 text-white" style="list-style-type: none; margin: 0; padding: 0;">
+                <li>Manage Dynamic Content For Your WebSite</li>
+                <li>An Optimal, Reliable and Dynamic Web Backend</li>
+                <li>Modern Secure Interface based on Google Cloud</li>
+            </ul>
+        </div>
+        <div class="col-12 col-sm-6 d-flex flex-column justify-content-center align-items-center" >
+            <div class="card w-75 shadow-sm">
+                <div class="card-header bg-white border-0">
+                    <h3 class="text-center m-0">Register</h3>
+                  </div>
+                <div class="card-body">
+                    <form [formGroup]="userRef" (ngSubmit)="createAccount()">
+                        <div class="row" >
+                            <div class="form-group col-sm-6">
+                                <label for="user">user</label>
+                                <input type="user" class="form-control" id="user"  formControlName="user" 
+                                autocomplete="off" aria-describedby="username" placeholder="Enter username"
+                                required>
+                                <small id="usernameHelp" class="form-text text-muted">We'll never share your username with anyone else.</small>
+                              </div>
+                            <div class="form-group col-sm-6">
+                                <label for="username">FullName</label>
+                                <input type="username" class="form-control" id="username"  formControlName="fullName" 
+                                autocomplete="off" aria-describedby="username" placeholder="Enter fullname"
+                                required>
+                                <small id="usernameHelp" class="form-text text-muted">We'll never share your username with anyone else.</small>
+                              </div>
+                              <div class="form-group col-sm-6">
+                                  <label for="email">Email address</label>
+                                  <input type="email" class="form-control" id="email"  formControlName="email" autocomplete="off" aria-describedby="email" placeholder="eg: abc@example.com"
+                                  required>
+                                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="form-group col-sm-6 mt-2">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" autocomplete="off" id="password" 
+                                formControlName="password" placeholder="Enter your password" required>
+                            </div>
+                            <div class="form-group col-sm-6 mt-2">
+                                <label for="cnfStreet">Street</label>
+                                <input type="text" class="form-control" formControlName="street"
+                                autocomplete="off" id="street" placeholder="Enter Street" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-sm-6 mt-2">
+                                <label for="city">City</label>
+                                <input type="text" class="form-control" autocomplete="off" id="city" 
+                                formControlName="city" placeholder="Enter your city" required>
+                            </div>
+                            <div class="form-group col-sm-6 mt-2">
+                                <label for="cnfstate">State</label>
+                                <input type="text" class="form-control" formControlName="state"
+                                autocomplete="off" id="cnfstate" placeholder="Enter your state" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-sm-6 mt-2">
+                                <label for="country">Country</label>
+                                <input type="text" class="form-control" autocomplete="off" id="country" 
+                                formControlName="country" placeholder="Enter your country" required>
+                            </div>
+                            <div class="form-group col-sm-6 mt-2">
+                                <label for="cnfpincode">PinCode</label>
+                                <input type="text" class="form-control" formControlName="pincode"
+                                autocomplete="off" id="cnfstate" placeholder="Enter your pincode" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-sm-6 mt-2">
+                                <label for="contact">Contact</label>
+                                <input type="number" class="form-control" autocomplete="off" id="concact" 
+                                formControlName="contact" placeholder="Enter your contact" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-check mt-2">
+                            <input type="checkbox" class="form-check-input" id="remember" required>
+                            <label class="form-check-label me-2" for="remember">Remember me</label> 
+                            <a (click)="goTo('/login')" class="link ms-3">SignIn Here</a>
+                          </div>
+                        <button type="submit" class="btn btn-info mt-3">Submit</button>
+                      </form>
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>
