@@ -1,0 +1,44 @@
+version: "3.7"
+services:
+  database:
+    image: mysql:8
+    container_name: database
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: dockerinfo_image   
+      MYSQL_USER: akash
+      MYSQL_PASSWORD: akash
+    ports:
+      - 3307:3306
+    networks:
+      - spring-boot-with-docker_default
+  spring-boot-app:
+    build:
+      context: ./spring-boot-with-docker/
+      dockerfile: Dockerfile
+    #image: product-backend-app
+    container_name: spring-boot-app
+    depends_on:
+      - database
+    ports:
+      - "9090:9090"
+    networks:
+      - spring-boot-with-docker_default
+      - frontendNetwork
+
+  angular-app:
+    build:
+      context: ./angular-docker/
+      dockerfile: Dockerfile
+    #image: product-frontend-app
+    container_name: angular-app
+    ports:
+      - "80:80"
+    depends_on:
+      - spring-boot-app
+    networks:
+      - frontendNetwork
+networks:
+  spring-boot-with-docker_default:
+  frontendNetwork:
+     
